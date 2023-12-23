@@ -32,37 +32,35 @@ fi
 
 dnf install nginx -y &>> $LOGFILE
 
-VALIDATE $? "installing nginx"
+VALIDATE $? "Installing nginx"
 
 systemctl enable nginx &>> $LOGFILE
 
-VALIDATE $? "Enabled nginx"
+VALIDATE $? "Enabling nginx"
 
 systemctl start nginx &>> $LOGFILE
 
-VALIDATE $? "Started nginx"
-
 rm -rf /usr/share/nginx/html/* &>> $LOGFILE
 
-VALIDATE $? "removing default content of nginx"
+VALIDATE $? "Removing nginx default content"
 
 curl -o /tmp/web.zip https://roboshop-builds.s3.amazonaws.com/web.zip &>> $LOGFILE
 
-VALIDATE $? "Downloading Web  content"
+VALIDATE $? "Downloading Web APP code"
 
 cd /usr/share/nginx/html &>> $LOGFILE
 
-VALIDATE $? "Moving to nginx HTML Dir"
+VALIDATE $? "change directory to html"
 
 unzip -o /tmp/web.zip &>> $LOGFILE
 
-VALIDATE $? "Unzipping the Web App code"
+VALIDATE $? "Unzipped web.zip"
 
 cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf &>> $LOGFILE
 
-VALIDATE $? "configured reverse proxy to nginx"
+VALIDATE $? "copying roboshop.conf reverse proxy"
 
-systemctl restart nginx
+systemctl restart nginx &>> $LOGFILE
 
-VALIDATE $? "Restarted nginx"
+VALIDATE $? "Restarting nginx"
 
