@@ -34,9 +34,13 @@ curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.
 
 VALIDATE $? "Downloading Erlang Scrpt"
 
+curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash &>> $LOGFILE
+
+VALIDATE $? "Downloading Rabbitmq script"
+
 dnf install rabbitmq-server -y &>> $LOGFILE
 
-VALIDATE $? "Innstalling Rabbitmq server"
+VALIDATE $? "Installing Rabbitmq server"
 
 systemctl enable rabbitmq-server &>> $LOGFILE
 
