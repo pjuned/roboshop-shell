@@ -30,7 +30,7 @@ else
     echo "you are root user"
 fi
  
- dnf install maven -y
+ dnf install maven -y &>> $LOGFILE
 
  VALIDATE $? "Installing maven"
 
@@ -38,7 +38,7 @@ fi
 if [ $? -ne 0 ]
 then 
     useradd roboshop
-    VALIDATE $? "roboshop user creation"
+    VALIDATE $? "roboshop user created"
 else
     echo -e  "roboshop user alreadyy exists $y skipping.. $N"
 fi
@@ -88,7 +88,7 @@ dnf install mysql -y &>> $LOGFILE
 
 VALIDATE $? "Installing mysql client"
 
-mysql -h mysql.devopsju.online -uroot -pRoboShop@1 < /app/schema/shipping.sql &>> $LOGFILE
+mysql -h mysql.devopsju.online -uroot -pRoboShop@1 < /app/schema/shipping.sql &>> $LOGFILE 
 
 VALIDATE $? "Loading Shipping Data"
 
