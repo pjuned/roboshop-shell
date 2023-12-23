@@ -88,7 +88,7 @@ dnf install mysql -y &>> $LOGFILE
 
 VALIDATE $? "Installing mysql client"
 
-mysql -h mysq.devopsju.online -uroot -pRoboShop@1 < /app/schema/shipping.sql &>> $LOGFILE
+mysql -h mysql.devopsju.online -uroot -pRoboShop@1 < /app/schema/shipping.sql &>> $LOGFILE
 
 VALIDATE $? "Loading Shipping Data"
 
