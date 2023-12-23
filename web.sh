@@ -61,6 +61,10 @@ cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf
 
 VALIDATE $? "configured reverse proxy to nginx"
 
+systemctl enable nginx
+
+systemctl start nginx
+
 systemctl restart nginx
 
 VALIDATE $? "Restarted nginx"
