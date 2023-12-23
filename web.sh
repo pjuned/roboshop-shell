@@ -65,7 +65,7 @@ systemctl enable nginx
 
 systemctl start nginx
 
-systemctl restart nginx
+#systemctl restart nginx
 
 VALIDATE $? "Restarted nginx"
 
