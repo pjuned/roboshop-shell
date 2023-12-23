@@ -8,7 +8,7 @@ Y="\e[33m"
 N="\e[0m"
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
-LOGFILE="/tmp/$0-$TIMESTAMP.log"
+LOGFILE="/tmp/monogodb.log"
 
 echo "Script started executing t $TIMESTAMP" &>>  $LOGFILE
 
