@@ -16,6 +16,7 @@ VALIDATE(){
     if [ $? -ne 0 ]
     then 
         echo -e "$2 ....$R Failed $N"
+        exit 1
     else 
         echo -e "$2 ....$G Success $N"
     fi
@@ -40,11 +41,21 @@ dnf install nodejs -y &>> $LOGFILE
 
 VALIDATE $? "installing NodeJS 18" 
 
+id roboshop
+if [ $? -ne 0 ]
+then 
+    useradd roboshop
+    VALIDATE $? "roboshop user creation"
+else
+    echo -e  "roboshop user alreadyy exists $y skipping.. $N"
+fi
+
+
 useradd roboshop &>> $LOGFILE
 
 VALIDATE $? "user roboshop created" 
 
-mkdir /app &>> $LOGFILE
+mkdir -p /app &>> $LOGFILE
 
 VALIDATE $? "Creating app directory" 
 
@@ -55,7 +66,7 @@ VALIDATE $? "Downloading the Application"
 
 cd /app &>> $LOGFILE
 
-unzip /tmp/catalogue.zip &>> $LOGFILE
+unzip -o /tmp/catalogue.zip &>> $LOGFILE
 
 VALIDATE $? "Unzipping the App code"
 
@@ -87,7 +98,7 @@ dnf install mongodb-org-shell -y &>> $LOGFILE
 
 VALIDATE $? "Installing mongodb client"
 
-mongo --host mongodb.devopsju.online </app/schema/catalogue.js &>> $LOGFILE
+mongo --host mongodb.devopsju.online </app1/schema/catalogue.js &>> $LOGFILE
 
 VALIDATE $? "Loading catalogue data into mongodb"
 
