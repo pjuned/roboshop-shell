@@ -63,7 +63,7 @@ npm install &>> $LOGFILE
 
 VALIDATE $? "Installing Dependencies" 
 
-cp /home/centos/roboshop-shell/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service &>> $LOGFILE
+cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service &>> $LOGFILE
 
 VALIDATE $? "copying catalouge service file"
 
@@ -79,7 +79,7 @@ systemctl start catalogue &>> $LOGFILE
 
 VALIDATE $? "Starting Catalogue" 
 
-cp /home/centos/roboshop-shell/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo&>> $LOGFILE
+cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo&>> $LOGFILE
 
 VALIDATE $? "copying mongo repo"
 
