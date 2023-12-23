@@ -53,7 +53,7 @@ fi
 
 useradd roboshop &>> $LOGFILE
 
-VALIDATE $? "user roboshop created" 
+#VALIDATE $? "user roboshop created" 
 
 mkdir -p /app &>> $LOGFILE
 
