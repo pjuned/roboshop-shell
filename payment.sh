@@ -39,6 +39,21 @@ else
     echo -e  "roboshop user alreadyy exists $y skipping.. $N"
 fi
 
+dnf install python36 gcc python3-devel -y &>> $LOGFILE
+
+VALIDATE $? "Installing python 36 gcc"
+
+
+id roboshop
+if [ $? -ne 0 ]
+then 
+    useradd roboshop
+    VALIDATE $? "roboshop user creation"
+else
+    echo -e  "roboshop user alreadyy exists $y skipping.. $N"
+fi
+
+
 
 mkdir -p /app &>> $LOGFILE
 
