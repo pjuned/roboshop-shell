@@ -6,6 +6,7 @@ INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "cart" "user" "shipp
 "payment" "dispatch" "web") 
 
 for i in "${INSTANCES[@]}"
+
 do 
 
 echo "Instance is :  $i"
